@@ -143,7 +143,7 @@ Each requirement states its business reason; numbers in the acceptance criteria 
 | Explainability | Escalations list readable reasons; every citation traces back to the section text | Reviewers must judge whether the system's reasons hold |
 | Reproducibility | Fixed seeds; dependency versions and preprocessing parameters stored with the model; configuration in one file | Model validation must be able to rerun and get the same result |
 | Privacy | v1 uses only CFPB public data, already redacted (XXXX masking) | Complaint text is sent to an external LLM API; bank data would need a local model or redaction first |
-| Security | Localhost only; model services have no authentication or rate limiting | Demonstration environment; production deployment is designed separately |
+| Security | Localhost only; model services have no authentication or rate limiting | v1 runs on a single workstation; production deployment requires a separate security design |
 | Environment | Windows and Linux; falls back to CPU when no GPU is present | Runs on both developer machines and servers |
 
 ### 1.8 Data requirements
@@ -166,7 +166,7 @@ Of the 9 product groups, only Checking or savings account and Money transfer or 
 
 ### 1.9 Constraints and assumptions
 
-- Stack: LangChain/LangGraph, PyTorch + HuggingFace, TensorFlow, MLflow; MLflow is the only MLOps tool. Two days, one person.
+- Stack: LangChain/LangGraph, PyTorch + HuggingFace, TensorFlow, MLflow; MLflow is the only MLOps tool. Delivery window: two working days, one engineer.
 - LLMs via the Anthropic API: a fast model extracts, a strong model drafts. Claude 5.x models reject the temperature parameter, thinking consumes part of max\_tokens, and structured output uses the native json\_schema method.
 - Training data: the CFPB announced on 2026-08-14 that it would stop publishing complaint narratives ([Consumer Finance Monitor](https://www.consumerfinancemonitor.com/2026/08/18/cfpb-ends-publication-of-consumer-complaint-narratives-and-data-visualizations/)), so a 2026-01 Parquet snapshot is used; the data script accepts several column-name conventions.
 - Public data covers only complaints that consumers sent to the CFPB and agreed to publish; the mix may differ from complaints arriving through the bank's own channels.
@@ -189,7 +189,7 @@ Of the 9 product groups, only Checking or savings account and Money transfer or 
 ### 1.11 Milestones
 
 1. Day 1: data and corpus (01, 02), embeddings and index (03), train and register both models (04, 05), run the flow in-process (08).
-2. Day 2: evaluate and set champion (06), serve both models over HTTP (07), switch the flow to HTTP for the end-to-end demo, write the README.
+2. Day 2: evaluate and set champion (06), serve both models over HTTP (07), switch the flow to HTTP for the end-to-end run, complete the documentation.
 3. Acceptance: smoke test green; real-data run completes end to end with human review; evaluation report generated.
 
 ## Part 2 Workflow
@@ -480,7 +480,7 @@ LangGraph is used rather than a chain of Python calls because three of its built
 - **Nodes**: state → dict functions holding no connections; model clients and the embedder are lru\_cache singletons.
 - **Routing**: route\_scope reads reg\_e\_in\_scope; route\_after\_verify reads citation\_issues and draft\_attempts, with the loop limit from config.
 - **Pause**: interrupt(payload) in human\_review hands out the review payload; the caller continues with Command(resume=...). Without a checkpointer there is no interrupt, so build\_app() always attaches SqliteSaver.
-- **Execution**: stream(stream\_mode="updates") prints node by node, for demos and debugging.
+- **Execution**: stream(stream\_mode="updates") prints node by node, for interactive runs and debugging.
 - **Not used**: multiple agents, parallel branches, subgraphs. Handling one complaint is linear plus one loop.
 
 ### 3.7 Prompts and output constraints
@@ -595,10 +595,10 @@ Not evaluated yet: extraction accuracy (no labels), whether drafts are actually 
 | MLOps tool | MLflow for tracking / registry / serving | Docker + TF Serving + CI | One tool covers three stages; smallest operational surface; runs on one machine |
 | Vector store | FAISS in-memory index | Vector database | A few dozen chunks; no unrequired components |
 | Framework conflict | Two venvs + framework-free shared modules | One environment / containers | Stable, and shows that the two models interact only through HTTP and files |
-| State persistence | SQLite checkpointer | Postgres | Enough for a single-machine demo; same interface, swapped in phase two |
+| State persistence | SQLite checkpointer | Postgres | Sufficient for a single-workstation deployment; same interface, replaced in phase two |
 | Classifier | Fine-tuned DistilBERT | LLM classification | 9,000 labeled examples available; cheap, fast, measurable |
 | Relief model framework | TensorFlow/Keras | PyTorch | The platform must host both PyTorch and TensorFlow models; a small MLP is enough to prove registration and serving for both |
-| LLM | Claude API: fast model extracts, strong model drafts | Local LLM | Simplest within two days; local deployment is the phase-two on-prem item |
+| LLM | Claude API: fast model extracts, strong model drafts | Local LLM | Fastest path within the two-day delivery window; local deployment is the phase-two on-premises item |
 | Human review | LangGraph interrupt + checkpoint | External work queue | Flow and review share one state, resumable across processes, least code |
 | Citation check | Regex + set difference in code | LLM self-check | Deterministic, free, explainable |
 | Regulation corpus | eCFR API pulled by date | Static copy | Point-in-time, reproducible, citations traceable |

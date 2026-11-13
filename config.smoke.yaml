@@ -46,8 +46,9 @@ relief:
 llm:
   fast: claude-haiku-5-5
   strong: claude-sonnet-5-5
-  temperature: 0
-  max_tokens: 1024
+  temperature: null                   # not sent when null; Claude 5.x models do not accept this parameter
+  max_tokens: 4096
+  structured_output_method: json_schema
 
 serving:
   classifier_backend: local
