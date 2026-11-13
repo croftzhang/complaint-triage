@@ -1,0 +1,25 @@
+{"question": "My debit card was stolen and used for several withdrawals. How much can I be held liable for if I reported it within two business days?", "expected_sections": ["1005.6"]}
+{"question": "I did not report an unauthorized transfer on my statement for more than 60 days. Am I liable for later transfers?", "expected_sections": ["1005.6"]}
+{"question": "What extenuating circumstances extend the time limit for reporting lost or stolen debit cards?", "expected_sections": ["1005.6"]}
+{"question": "How many business days does the bank have to investigate an error I reported about an electronic fund transfer?", "expected_sections": ["1005.11"]}
+{"question": "When must a bank give provisional credit during an investigation of a disputed transfer?", "expected_sections": ["1005.11"]}
+{"question": "The bank says it needs more than 10 days to investigate my dispute. How long can the investigation take?", "expected_sections": ["1005.11"]}
+{"question": "What counts as an error that triggers the error resolution procedures for electronic transfers?", "expected_sections": ["1005.11"]}
+{"question": "My account is less than 30 days old and the bank took 20 business days to investigate. Is that allowed?", "expected_sections": ["1005.11"]}
+{"question": "The bank found no error. What written explanation must it give me and can I get the documents it relied on?", "expected_sections": ["1005.11"]}
+{"question": "How many days before a recurring payment can I tell the bank to stop it?", "expected_sections": ["1005.10"]}
+{"question": "A merchant debits a different amount each month. Must I get advance notice of the amount?", "expected_sections": ["1005.10"]}
+{"question": "Can a lender require that I repay a loan by automatic electronic debit?", "expected_sections": ["1005.10"]}
+{"question": "I was charged overdraft fees on debit card purchases but never opted in to overdraft coverage. What does the rule require?", "expected_sections": ["1005.17"]}
+{"question": "What must the bank do before charging a fee for paying an ATM transaction that overdraws my account?", "expected_sections": ["1005.17"]}
+{"question": "I sent money abroad through a remittance provider and it never arrived. How long do I have to report the error?", "expected_sections": ["1005.33"]}
+{"question": "What remedies must a remittance transfer provider offer when it finds an error?", "expected_sections": ["1005.33"]}
+{"question": "Can I cancel an international money transfer after paying for it and get a full refund?", "expected_sections": ["1005.34"]}
+{"question": "How quickly must a remittance provider refund a cancelled transfer?", "expected_sections": ["1005.34"]}
+{"question": "What disclosures must a remittance provider give the sender before payment?", "expected_sections": ["1005.31"]}
+{"question": "Is a bank required to disclose its ATM fee on the screen or a sign before I complete a withdrawal?", "expected_sections": ["1005.16"]}
+{"question": "What initial disclosures must a bank give when a consumer opens an account with electronic transfer services?", "expected_sections": ["1005.7"]}
+{"question": "Must the bank notify me before changing the terms of my electronic fund transfer service, such as fees or liability?", "expected_sections": ["1005.8"]}
+{"question": "Can a bank send me a debit card I did not request?", "expected_sections": ["1005.5"]}
+{"question": "What information has to be on my periodic statement for electronic transfers?", "expected_sections": ["1005.9"]}
+{"question": "Can a gift card expire or charge inactivity fees?", "expected_sections": ["1005.20"]}

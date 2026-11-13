@@ -1,0 +1,70 @@
+# Smoke-test configuration: synthetic data, tiny randomly initialised models, CPU only.
+# Purpose: verify that every script and the LangGraph pipeline are wired correctly
+# in a few minutes, before spending GPU time or API credits.
+#
+#   export TRIAGE_CONFIG=config.smoke.yaml
+#   export TRIAGE_FAKE_LLM=1        # optional: no Anthropic API key needed
+
+mlflow:
+  tracking_uri: http://127.0.0.1:5000
+  experiment: complaint-triage-smoke
+
+paths:
+  raw_dir: data/smoke/raw
+  processed_dir: data/smoke/processed
+  index_dir: data/smoke/index
+  checkpoint_db: data/smoke/checkpoints.sqlite
+  reports_dir: data/smoke/reports
+
+data:
+  date_min: "2023-01-01"
+  n_per_class: 60
+  test_size: 0.25
+  seed: 42
+
+embedding:
+  model: data/smoke/tiny-embedder     # built by scripts/03 when smoke.tiny_models is true
+  batch_size: 64
+
+classifier:
+  base_model: data/smoke/tiny-encoder # built by scripts/04 when smoke.tiny_models is true
+  registered_name: smoke-complaint-classifier
+  max_len: 64
+  batch_size: 16
+  epochs: 1
+  lr: 5.0e-4
+  bf16: false
+
+relief:
+  registered_name: smoke-relief-predictor
+  epochs: 3
+  batch_size: 64
+  hidden: [32, 16]
+  dropout: 0.1
+  threshold: 0.35
+
+llm:
+  fast: claude-haiku-5-5
+  strong: claude-sonnet-5-5
+  temperature: 0
+  max_tokens: 1024
+
+serving:
+  classifier_backend: local
+  classifier_url: http://127.0.0.1:5001/invocations
+  relief_backend: disabled
+  relief_url: http://127.0.0.1:5002/invocations
+
+retrieval:
+  k: 3
+  chunk_chars: 600
+
+risk:
+  amount_threshold: 1000
+  vulnerable_tags: ["Older American", "Servicemember"]
+
+graph:
+  max_draft_attempts: 2
+
+smoke:
+  tiny_models: true     # build random tiny HF models locally instead of downloading pretrained ones

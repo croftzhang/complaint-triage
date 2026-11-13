@@ -1,0 +1,103 @@
+{
+  "classifier": {
+    "versions": [
+      {
+        "version": "2",
+        "run_id": "b5ee1e6d37c646249974e43161b4a9cf",
+        "test_accuracy": 0.8044444444444444,
+        "test_macro_f1": 0.8042433503454931
+      }
+    ],
+    "champion_version": "2",
+    "n_eval": 1800,
+    "accuracy": 0.8044,
+    "macro_f1": 0.8042,
+    "per_class_accuracy": {
+      "Checking or savings account": 0.785,
+      "Credit card": 0.71,
+      "Credit reporting": 0.83,
+      "Debt collection": 0.775,
+      "Money transfer or service": 0.775,
+      "Mortgage": 0.86,
+      "Payday or personal loan": 0.695,
+      "Student loan": 0.955,
+      "Vehicle loan or lease": 0.855
+    }
+  },
+  "retrieval": {
+    "n": 25,
+    "k": 5,
+    "recall@5": 0.84,
+    "misses": [
+      {
+        "question": "A merchant debits a different amount each month. Must I get advance notice of the amount?",
+        "expected": [
+          "1005.10"
+        ],
+        "got": [
+          "1005.8",
+          "1005.17",
+          "1005.17",
+          "1005.14",
+          "1005.11"
+        ]
+      },
+      {
+        "question": "Can a lender require that I repay a loan by automatic electronic debit?",
+        "expected": [
+          "1005.10"
+        ],
+        "got": [
+          "1005.17",
+          "1005.18",
+          "1005.18",
+          "1005.18",
+          "1005.17"
+        ]
+      },
+      {
+        "question": "Is a bank required to disclose its ATM fee on the screen or a sign before I complete a withdrawal?",
+        "expected": [
+          "1005.16"
+        ],
+        "got": [
+          "1005.7",
+          "1005.18",
+          "1005.17",
+          "1005.18",
+          "1005.17"
+        ]
+      },
+      {
+        "question": "Can a bank send me a debit card I did not request?",
+        "expected": [
+          "1005.5"
+        ],
+        "got": [
+          "1005.17",
+          "1005.14",
+          "1005.17",
+          "1005.14",
+          "1005.18"
+        ]
+      }
+    ]
+  },
+  "relief": {
+    "versions": [
+      {
+        "version": "1",
+        "run_id": "832c181d0c6348d988d21beeebca9d7b",
+        "test_pr_auc": 0.29817797468429064,
+        "test_roc_auc": 0.8763742690058479,
+        "test_precision_at_thr": 0.17647058823529413,
+        "test_recall_at_thr": 0.8
+      }
+    ],
+    "champion_version": "1",
+    "test_pr_auc": 0.29817797468429064,
+    "test_roc_auc": 0.8763742690058479,
+    "test_precision_at_thr": 0.17647058823529413,
+    "test_recall_at_thr": 0.8
+  }
+}

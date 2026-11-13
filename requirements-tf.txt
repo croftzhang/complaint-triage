@@ -1,0 +1,9 @@
+# TensorFlow environment (separate virtualenv): only step 5 and serving the relief model.
+#   python -m venv .venv-tf && source .venv-tf/bin/activate && pip install -r requirements-tf.txt
+tensorflow>=2.16
+mlflow>=3.0
+scikit-learn>=1.5
+pandas>=2.2
+pyarrow>=16
+numpy>=1.26
+pyyaml>=6

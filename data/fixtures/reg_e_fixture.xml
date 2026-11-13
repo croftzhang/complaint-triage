@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TEST FIXTURE ONLY. This mimics the eCFR XML structure for 12 CFR Part 1005 so the
+  parser and the smoke test can run offline. The paragraphs are short paraphrases
+  written for testing and are NOT the regulation text. Run scripts/02_fetch_reg_e.py
+  without the local-xml option to get the real, current text from eCFR.
+-->
+<DIV5 N="1005" TYPE="PART">
+  <HEAD>PART 1005—ELECTRONIC FUND TRANSFERS (REGULATION E) [FIXTURE]</HEAD>
+  <DIV6 N="Subpart A" TYPE="SUBPART">
+    <HEAD>Subpart A—General</HEAD>
+    <DIV8 N="§ 1005.6" TYPE="SECTION">
+      <HEAD>§ 1005.6 Liability of consumer for unauthorized transfers.</HEAD>
+      <P>(a) <I>Conditions for liability.</I> A consumer may be held liable for an unauthorized electronic fund transfer only if the institution provided the required disclosures about liability and error resolution and, where an access device is involved, the device was accepted and the institution has a way to identify the consumer who uses it.</P>
+      <P>(b) <I>Limitations on amount of liability.</I> (1) <I>Timely notice given.</I> If the consumer notifies the institution within two business days after learning of the loss or theft of an access device, liability is limited to the lesser of fifty dollars or the amount of unauthorized transfers made before notice.</P>
+      <P>(2) <I>Timely notice not given.</I> If the consumer does not notify the institution within two business days after learning of the loss or theft, liability may be up to five hundred dollars, covering transfers made before notice that could have been prevented by timely notice.</P>
+      <P>(3) <I>Periodic statement; timely notice not given.</I> If an unauthorized transfer appears on a periodic statement and the consumer does not report it within sixty days after the statement was sent, the consumer may be liable for unauthorized transfers that occur after the sixty-day period and before notice.</P>
+      <P>(4) <I>Extension of time limits.</I> The time limits are extended to a reasonable period when the consumer's delay was caused by extenuating circumstances such as hospitalization or extended travel.</P>
+    </DIV8>
+    <DIV8 N="§ 1005.10" TYPE="SECTION">
+      <HEAD>§ 1005.10 Preauthorized transfers.</HEAD>
+      <P>(a) <I>Preauthorized transfers to consumer's account.</I> When a person initiates recurring credits to a consumer's account, the institution must provide a way for the consumer to confirm that the transfer was received.</P>
+      <P>(c) <I>Consumer's right to stop payment.</I> A consumer may stop payment of a preauthorized transfer from the account by notifying the institution orally or in writing at least three business days before the scheduled date of the transfer.</P>
+      <P>(d) <I>Notice of transfers varying in amount.</I> When a preauthorized transfer will vary in amount, the payee or the institution must send written notice of the amount and date at least ten days before the transfer.</P>
+      <P>(e) <I>Compulsory use.</I> No institution or other person may condition an extension of credit on repayment by preauthorized electronic fund transfer, and no person may require a consumer to establish an account at a particular institution as a condition of employment or receipt of a government benefit.</P>
+    </DIV8>
+    <DIV8 N="§ 1005.11" TYPE="SECTION">
+      <HEAD>§ 1005.11 Procedures for resolving errors.</HEAD>
+      <P>(a) <I>Definition of error.</I> An error includes an unauthorized electronic fund transfer, an incorrect transfer to or from the account, an omission from a periodic statement, a computational or bookkeeping error, an incorrect amount received from an electronic terminal, and a consumer's request for documentation or clarification.</P>
+      <P>(b) <I>Notice of error from consumer.</I> A notice of error is timely if received no later than sixty days after the institution sends the periodic statement on which the error first appears. The notice must identify the consumer and the account, and indicate why the consumer believes an error exists and its type, date and amount to the extent possible.</P>
+      <P>(c) <I>Time limits and extent of investigation.</I> (1) <I>Ten-day period.</I> The institution shall investigate promptly and, within ten business days of receiving the notice, determine whether an error occurred, report the results to the consumer within three business days of completing the investigation, and correct the error within one business day of determining that an error occurred.</P>
+      <P>(2) <I>Forty-five day period.</I> If the institution is unable to complete its investigation within ten business days, it may take up to forty-five days, provided that it provisionally credits the consumer's account in the amount of the alleged error within ten business days, informs the consumer of the provisional credit within two business days, and gives the consumer full use of the funds during the investigation.</P>
+      <P>(3) <I>Extension of time periods.</I> The periods are extended to twenty business days and ninety days for transfers involving a new account opened within the prior thirty days, point-of-sale debit card transactions, and transfers initiated outside the United States.</P>
+      <P>(d) <I>Procedures if error is not found.</I> If the institution determines that no error occurred, it shall mail or deliver a written explanation within three business days after concluding the investigation and shall inform the consumer of the right to request the documents relied upon.</P>
+    </DIV8>
+    <DIV8 N="§ 1005.17" TYPE="SECTION">
+      <HEAD>§ 1005.17 Requirements for overdraft services.</HEAD>
+      <P>(b) <I>Opt-in requirement.</I> An institution shall not assess a fee for paying an ATM or one-time debit card transaction under an overdraft service unless it provided a notice describing the service, gave the consumer a reasonable opportunity to consent, obtained the consumer's affirmative consent, and provided written confirmation of the consent that includes a statement of the right to revoke it.</P>
+      <P>(c) <I>Same account terms.</I> An institution shall provide consumers who do not opt in the same account terms, conditions and features that it provides to consumers who do opt in.</P>
+    </DIV8>
+  </DIV6>
+  <DIV6 N="Subpart B" TYPE="SUBPART">
+    <HEAD>Subpart B—Requirements for Remittance Transfers</HEAD>
+    <DIV8 N="§ 1005.33" TYPE="SECTION">
+      <HEAD>§ 1005.33 Procedures for resolving errors.</HEAD>
+      <P>(a) <I>Definition of error.</I> For a remittance transfer, an error includes an incorrect amount paid by the sender, a computational error, a failure to make funds available to the designated recipient by the disclosed date, and a failure to make the full amount available.</P>
+      <P>(b) <I>Notice of error.</I> A notice of error from a sender is timely if received within one hundred eighty days of the disclosed date of availability.</P>
+      <P>(c) <I>Time limits and extent of investigation.</I> A remittance transfer provider shall investigate promptly and determine whether an error occurred within ninety days of receiving the notice, and report the results within three business days of completing the investigation.</P>
+      <P>(d) <I>Remedies.</I> If an error occurred, the provider shall correct it within one business day of determination, including by refunding the amount or making the funds available to the recipient as the sender chooses.</P>
+    </DIV8>
+    <DIV8 N="§ 1005.34" TYPE="SECTION">
+      <HEAD>§ 1005.34 Procedures for cancellation and refund of remittance transfers.</HEAD>
+      <P>(a) <I>Sender right of cancellation and refund.</I> A sender may cancel a remittance transfer if the request is received within thirty minutes after payment and the funds have not yet been picked up or deposited.</P>
+      <P>(b) <I>Time limits and refund requirements.</I> The provider shall refund the total amount of funds provided by the sender, including fees and taxes, within three business days of receiving a timely cancellation request.</P>
+    </DIV8>
+  </DIV6>
+</DIV5>

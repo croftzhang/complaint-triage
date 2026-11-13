@@ -1,0 +1,65 @@
+# Central configuration. Every script and the triage package read this file.
+# Override the path with the TRIAGE_CONFIG environment variable
+# (e.g. TRIAGE_CONFIG=config.smoke.yaml for the CPU-only smoke test).
+
+mlflow:
+  tracking_uri: http://127.0.0.1:5000
+  experiment: complaint-triage
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  index_dir: data/index
+  checkpoint_db: data/checkpoints.sqlite
+  reports_dir: reports
+
+data:
+  date_min: "2023-01-01"     # only complaints received on/after this date (newer product taxonomy)
+  n_per_class: 1000          # balanced sample size per product group
+  test_size: 0.2
+  seed: 42
+
+embedding:
+  model: BAAI/bge-small-en-v1.5   # HuggingFace sentence-transformers model, 384-dim
+  batch_size: 128
+
+classifier:                       # PyTorch + HuggingFace Trainer
+  base_model: distilbert-base-uncased
+  registered_name: complaint-classifier
+  max_len: 256
+  batch_size: 32
+  epochs: 3
+  lr: 5.0e-5
+  bf16: true                      # used only when a CUDA GPU is present
+
+relief:                           # TensorFlow / Keras
+  registered_name: relief-predictor
+  epochs: 40
+  batch_size: 256
+  hidden: [256, 64]
+  dropout: 0.3
+  threshold: 0.35                 # probability above which a complaint is flagged as likely monetary relief
+
+llm:
+  fast: claude-haiku-5-5          # extraction
+  strong: claude-sonnet-5-5       # response drafting
+  temperature: null             # Claude 5.x models reject this parameter; null = do not send it
+  max_tokens: 4096                # Claude 5.x may spend part of this on thinking; 1024 got cut off mid-JSON
+  structured_output_method: json_schema   # native structured outputs; fallback: function_calling
+
+serving:
+  classifier_backend: http        # local = load from MLflow registry in-process | http = call `mlflow models serve` (:5001)
+  classifier_url: http://127.0.0.1:5001/invocations
+  relief_backend: http            # disabled = skip TF model | http = call `mlflow models serve` from the TF env (:5002)
+  relief_url: http://127.0.0.1:5002/invocations
+
+retrieval:
+  k: 5
+  chunk_chars: 1200
+
+risk:
+  amount_threshold: 1000          # USD; disputed amount at/above this escalates
+  vulnerable_tags: ["Older American", "Servicemember"]
+
+graph:
+  max_draft_attempts: 2

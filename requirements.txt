@@ -1,0 +1,25 @@
+# Main environment: PyTorch + HuggingFace + LangChain/LangGraph + MLflow.
+# Install PyTorch with CUDA first, following https://pytorch.org/get-started/locally/
+# (e.g. pip install torch --index-url https://download.pytorch.org/whl/cu128), then:
+#   pip install -r requirements.txt
+torch>=2.4
+transformers>=4.45
+datasets>=2.20
+accelerate>=1.0
+sentence-transformers>=3.0
+scikit-learn>=1.5
+pandas>=2.2
+pyarrow>=16
+numpy>=1.26
+pyyaml>=6
+python-dotenv>=1.0
+requests>=2.32
+mlflow>=3.0
+langchain>=1.0
+langchain-core>=1.0
+langchain-anthropic>=1.0
+langchain-huggingface>=1.0
+langchain-community>=0.4
+langgraph>=1.0
+langgraph-checkpoint-sqlite>=3.0
+faiss-cpu>=1.9
